@@ -18,9 +18,11 @@ from django.urls import include, path
 from django.contrib import admin
 from users import urls
 from . import views
+from graphene_django.views import GraphQLView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('users/', include('users.urls')),
+    url('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
